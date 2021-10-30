@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="43fa666a-f761-40f2-ab21-27d66cd74b78" name="Default Changelist" comment="">
+    <list default="true" id="f15e8c17-74e5-4f61-9892-088f52dae32a" name="Default Changelist" comment="">
       <change afterPath="$PROJECT_DIR$/../hw4/index.html" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../hw4/js/hw4.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../hw5/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../hw5/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../hw5/js/hw5.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Новая папка/hw3.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/hw3.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/hw5.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hw3/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../hw3/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hw3/Новая папка/hw3.js" beforeDir="false" afterPath="$PROJECT_DIR$/../hw3/js/hw3.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,7 +26,7 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="ProjectId" id="202F2Be9Wc81RIQBwuGJkmpdnW6" />
+  <component name="ProjectId" id="2088I7iRSHUUbC82moR2KBKeFrB" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -40,17 +40,20 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="43fa666a-f761-40f2-ab21-27d66cd74b78" name="Default Changelist" comment="" />
-      <created>1635234568047</created>
+      <changelist id="f15e8c17-74e5-4f61-9892-088f52dae32a" name="Default Changelist" comment="" />
+      <created>1635414771893</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1635234568047</updated>
-      <workItem from="1635234570131" duration="12447000" />
-      <workItem from="1635415060752" duration="2077000" />
-      <workItem from="1635577328480" duration="566000" />
+      <updated>1635414771893</updated>
+      <workItem from="1635414773507" duration="3000000" />
     </task>
     <servers />
   </component>
@@ -67,6 +70,5 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>
