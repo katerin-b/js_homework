@@ -1,8 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="43fa666a-f761-40f2-ab21-27d66cd74b78" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="665417e2-c56b-4d97-93d5-840309ee0e9c" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/js_homework1.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/hw1.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/hw1.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hw2/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hw2/js/hw2.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hw3/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../hw3/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hw4/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../hw4/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hw_holidays/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../hw_holidays/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -12,15 +22,15 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="JavaScript File" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="ProjectId" id="202F2Be9Wc81RIQBwuGJkmpdnW6" />
+  <component name="ProjectId" id="1zoUZ2QfFVFT5oZP8ZKzeDvg802" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -34,18 +44,23 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/js" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="43fa666a-f761-40f2-ab21-27d66cd74b78" name="Default Changelist" comment="" />
-      <created>1635234568047</created>
+      <changelist id="665417e2-c56b-4d97-93d5-840309ee0e9c" name="Default Changelist" comment="" />
+      <created>1634813985967</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1635234568047</updated>
-      <workItem from="1635234570131" duration="12447000" />
-      <workItem from="1635415060752" duration="2077000" />
-      <workItem from="1635577328480" duration="566000" />
-      <workItem from="1635867514264" duration="1110000" />
+      <updated>1634813985967</updated>
+      <workItem from="1634813987305" duration="1030000" />
+      <workItem from="1634844660481" duration="270000" />
+      <workItem from="1636130076724" duration="2575000" />
+      <workItem from="1636132977074" duration="297000" />
     </task>
     <servers />
   </component>
