@@ -1,0 +1,79 @@
+/* если у элементов формы есть атрибуты, связанные с валидацией, то
+браузер будет отображать подсказки
+(текст ее можно изменить, стилизовать без отключения нельзя)
+(для отключения встроенных браузерных подсказок используется атрибут novalidate)
+(novalidate используется, если мы хотим написать собственную валидацию)
++ форма не отправится, пока пользователь правильно не заполнит форму*/
+
+body {
+    font-family: Inter;
+}
+
+form[name="task"] {
+    width: 30%;
+    background-color: #fce4ec;
+    padding: 2rem;
+}
+
+form[name="task"] div {
+    /*margin-bottom: .5rem;*/
+}
+
+form[name="task"] input {
+    font-size: 1.1rem;
+    border-style: none;
+    outline-style: none;
+    background-color: inherit;
+    border-radius: unset;
+    display: inline-block;
+    width: 100%;
+    border-bottom: 3px solid #F48FB1;
+}
+
+form[name="task"] input[type=submit]{
+    font-family: Inter;
+    border: 2px solid #F48FB1;
+    color: #F48FB1;
+    cursor: pointer;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+form[name="task"] input:invalid{ /*если поле заполнено неверно, то ему можно стилизовать псевдокласс
+через input:valid можно стилизовать правильно заполненные поля
+можно также стилизовать поля по атрибутам, например, если есть required*/
+    border-color: #900;
+}
+
+form[name="task"] input:required:not(:focus){
+    border-color: #F48FB1;
+}
+
+/*form[name="registration"] input:focus:invalid {*/
+/*    outline: none;*/
+/*}*/
+
+.message {
+    font-size: 1rem;
+    visibility: hidden;
+}
+
+.active {
+    visibility: visible;
+}
+
+.error {
+    color: #900;
+}
+
+.success {
+    color: #F48FB1;
+}
+
+.form-message {
+    font-family: Inter;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+}
+

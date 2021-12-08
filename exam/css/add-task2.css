@@ -1,0 +1,78 @@
+body {
+    font-family: Inter;
+}
+
+form[name="task"] input[type=text] {
+    font-family: Inter;
+    width: 70%;
+    padding: 12px 16px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border-radius: 4px;
+    border: 1px solid lightslategray;
+}
+
+form[name="task"] input[type=submit] {
+    font-family: Inter;
+    width: 70%;
+    padding: 12px 16px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border-radius: 4px;
+    border: 1px solid lightslategray;
+}
+
+form[name="task"] input:invalid{
+    border-color: #900;
+}
+
+form[name="task"] input:required:not(:focus){
+    border-color: lightslategray;
+}
+
+
+textarea[type=text] {
+    font-family: Inter;
+    width: 70%;
+    padding: 12px 16px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border-radius: 4px;
+    border: 1px solid lightslategray;
+}
+
+input[type=datetime-local] {
+    font-family: Inter;
+    width: 30%;
+    padding: 12px 16px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border-radius: 4px;
+    border: 1px solid lightslategray;
+}
+
+form[name="task"] {
+    font-size: 1rem;
+    background-color: #f1f1f1;;
+    display: inline-block;
+    width: 70%;
+    padding: 40px;
+    border-radius: 8px;
+}
+
+.message {
+    font-size: 1rem;
+    visibility: hidden;
+}
+
+
+form[name="task"] button {
+    font-size: 1rem;
+    color: white;
+    background-color: #2196f3;
+    border-radius: 4px;
+    padding: 8px;
+}
+
+
+
