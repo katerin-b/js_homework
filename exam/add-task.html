@@ -3,31 +3,34 @@
 <head>
     <meta charset="utf-8">
     <title>Добавление задачи</title>
+    <link rel="stylesheet" href="css/add-task.css">
 </head>
 <body>
     <h1>Добавление задачи</h1>
-    <form action="#" method="post">
+    <form name="task" novalidate action="#" method="post"> <!-- novalidate отключает отображение встроенных сообщений об ошибке -->
+        <!--<div class="form-message success">Добавление задачи</div>-->
         <div>
-            <label for="task name">Название задачи</label>
-            <input type="text"
-                   id="task name"
-                   placeholder="Введите название задачи"
-                   maxlength = 20>
+            <label for="title">Название задачи *</label>
+            <input name="title" id="title" type="text" placeholder="Введите название задачи"
+                   minlength="1" maxlength="20" required>
+                   <!-- id="title" должно быть или нет? -->
+           <!-- <span class="message">*</span>-->
         </div>
         <div>
-            <label for="task description">Описание задачи</label>
-            <textarea id="task description"
-                      placeholder="Введите описание задачи"
+            <label for="description">Описание задачи</label>
+            <textarea name="description" id="description" type="text" placeholder="Введите описание задачи"
                       rows="6"></textarea>
         </div>
         <div>
-            <label for="date time">Срок выполнения задачи</label>
-            <input type="datetime-local"
-                   id="date time">
+            <label for="date">Срок выполнения задачи *</label>
+            <input name="date" id="date" type="datetime-local"
+                   required="required">
         </div>
         <div>
-            <input type="button"
-                   value="Добавить задачу">
+            <button type="submit">Добавить задачу</button>
+            <!-- или так?
+            <input type="submit"
+                   value="Добавить задачу"> -->
         </div>
     </form>
     <script src="js/add-task.js"></script>
