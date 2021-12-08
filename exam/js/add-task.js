@@ -36,43 +36,29 @@ const addTaskForm = document.forms.task;
 function setSuccess(elem) {
     elem.nextElementSibling.innerText = ''; // если не хотим выводить 'Поле заполнено верно'
 }
-function setError(elem) {
+function setError(elem, key){
     let messages = {
         valueMissing: 'Поле должно быть заполнено',
         tooShort:`Минмиальное количество символов ${elem.minLength}`,
         tooLong: `Максимальное количество символов ${elem.maxLength}`,
         isBeforeCurrentDate: `Дата не должна быть в прошлом ${elem.dateTime}` // Не разобралась, что должно быть вместо dateTime // НЕ ПОНЯЛА, КАК ПРОВЕРИТЬ ДАТУ
     };
-
+    this.nextElementSibling.innerText = messages[key];
+    this.nextElementSibling.className = 'message error active';
 }
 addTaskForm.elements.title.addEventListener('input', function () {
-    if (this.validity.valueMissing) { // на required // this - это поле, значение атрибута name которого = title (через this обращаемся к элементу addTaskForm.elements.title, на него уже добавлен обработчик)
-        this.nextElementSibling.innerText = 'Поле должно быть заполнено'; // ? this.nextElementSibling.innerText почему?
-        this.nextElementSibling. className = 'message error active';
-    } else if (this.validity.tooShort) { // minlength="1"
-        this.nextElementSibling.innerText = `Минмиальное количество символов ${this.minLength}`;
-        this.nextElementSibling. className = 'message error active';
-    } else if (this.validity.tooLong) { // maxlength="20"
-        this.nextElementSibling.innerText = `Максимальное количество символов ${this.maxLength}`;
-        this.nextElementSibling. className = 'message error active';
-    } else {
-        setSuccess(this);
-    }
-
+    if (this.validity.valueMissing) setError(this, 'valueMissing');
+    else if (this.validity.tooShort) setError(this, 'tooShort');
+    else if (this.validity.tooLong) setError(this, 'tooLong');
+    else setSuccess(this);
 });
 
 addTaskForm.elements.date.addEventListener('input', function () {
-    if (this.validity.valueMissing) { // на required // this - это поле, значение атрибута name которого = date (через this обращаемся к элементу addTaskForm.elements.title, на него уже добавлен обработчик)
-        this.nextElementSibling.innerText = 'Поле должно быть заполнено'; //
-        this.nextElementSibling.className = 'message error active';
-    } else if (this.validity.isBeforeCurrentDate.value) { // НЕ ПОНЯЛА, КАК ПРОВЕРИТЬ ДАТУ
-        this.nextElementSibling.innerText = 'Дата не должна быть в прошлом';
-        this.nextElementSibling. className = 'message error active';
-    } else {
-        setSuccess(this);
-    }
-
+    if (this.validity.valueMissing) setError(this, 'valueMissing');
+    else if (this.validity.isBeforeCurrentDate.value) setError(this, 'isBeforeCurrentDate'); // НЕ ПОНЯЛА, КАК ПРОВЕРИТЬ ДАТУ
+    else setSuccess(this);
 });
+
 // каждый раз, когда в поле будет вводиться значение, будет вызываться эта функция-обработчик
 // ОБЪЯСНЕНИЕ Ф-ИИ
 // получаем ссылку на объект, который хранит инф-ю о том валидно поле или нет
