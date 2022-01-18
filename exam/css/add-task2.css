@@ -12,7 +12,7 @@ form[name="task"] input[type=text] {
     border: 1px solid lightslategray;
 }
 
-form[name="task"] input[type=submit] {
+form[name="task"] input[type=button] {
     font-family: Inter;
     width: 70%;
     padding: 12px 16px;
@@ -20,6 +20,11 @@ form[name="task"] input[type=submit] {
     box-sizing: border-box;
     border-radius: 4px;
     border: 1px solid lightslategray;
+    cursor: pointer;
+}
+
+form[name="task"] input[type=button]:hover {
+    background-color: #C0C0C0;
 }
 
 form[name="task"] input:invalid{
@@ -74,5 +79,11 @@ form[name="task"] button {
     padding: 8px;
 }
 
+#formMessageSuccess {
+    color: #008000;
+}
 
+.errMsg {
+    color: #ff0000;
+}
 

@@ -1,163 +1,100 @@
 "use strict";
 
-let title = title; // из формы
-let description = description; // из формы
-let date; // из формы
+function main () {
 
+    const addTaskForm = document.forms['task']; // объект формы
+    let title = addTaskForm.elements['title']; // из формы
+    let description = addTaskForm.elements['description']; // из формы
+    let date = addTaskForm.elements['date']; // из формы
+    let submit = addTaskForm.elements['submit']; // из формы
+    let formSuccess = document.getElementById('formMessageSuccess'); // поле сообщения об успехе
 
+// блокируем возможность отправки нетронутой формы
+    title.error = 1;
+    date.error = 1;
 
+// убираем сообщение об успешной отправке при добавлении новой задачи
+    function clearFormSuccess() {
+        formSuccess.innerHTML = '';
+    }
 
-// ВАЛИДАЦИЯ ФОРМЫ
-// если пользователь ввел что-то неправильно, то задача добавляться не должна!
-// сначала нужно получить форму
-// затем повесить на нее обработчик событий addEventListener
-// затем проверять
-// затем при отправке формы получать значения каждого инпута и проверять
-// (если число, то сначала значение привести к числу, затем делать проверки)
-// (если сразу нужно каждое поле проверять, то сначала нужно получить данные -> добавить обработчик событий (либо клавиша отпущенная(key up), либо инпут))
-// значение элемента, которое ввел пользовател получаем через value -> затем проверяем
-// if value подходит, то <span class="message">Поле заполнено верно</span>
-// if value НЕ подходит, то <span class="message">Поле заполнено с ошибками</span>
-// помимо собственных проверок можно использовать Constraint Validation API (состоит из набора свойств и методов, доступных на DOM-интерфейсах)
+// убираем сообщение об ошибке заполнения поля
+    function clearError(elem) {
+        elem.nextElementSibling.innerText = ''; // если не хотим выводить 'Поле заполнено верно'
+    }
 
+// устанавливаем ошибку заполнения поля
+    function setError(elem, key){
+        elem.error = 1;
+        let messages = {
+            valueMissing: 'Поле должно быть заполнено',
+            tooShort:'Минмиальное количество символов ${elem.minLength}',
+            tooLong: 'Максимальное количество символов ${elem.maxLength}',
+            wrongDate: 'Дата не должна быть в прошлом'
+        };
+        elem.nextElementSibling.innerText = messages[key];
+    }
 
-// обращаемся к документу, получаем список всех его форм
-// потом по значению атрибута name получаем конкретную форму task
-// сохраняем ссылку на нее в переменную addTaskForm
-const addTaskForm = document.forms.task;
+// сохраняем задачу в хранилище
+    function saveTaskToLS() {
+        let tasks = [];
+        if (localStorage.getItem('tasks') != null) { // проверяем, есть ли там уже задачи
+            tasks = JSON.parse(localStorage.getItem('tasks')); // парсим текущую запись из хранилища
+        }
+        tasks.push({'title': title.value, 'description': description.value, 'date': date.value}); // добавляем к списку задач текущую
+        localStorage.setItem('tasks', JSON.stringify(tasks)); // сохраняем обновленный список задач в хранилище
+        console.log('Текущая запись в хранилище:');
+        console.log(JSON.parse(localStorage.getItem('tasks'))); // выводим для проверки текущее содержимое хранилища в консоль
+        formSuccess.innerHTML = 'Задача была успешно добавлена'; // размещаем сообщение об успешном добавлении задачи
+    }
 
+// обрабатываем фокус на названии задачи
+    title.addEventListener('focusin', function () {
+        clearFormSuccess();
+        clearError(this);
+    });
+// обрабатываем изменение адреса
+    title.addEventListener('change', function () {
+        if (title.value.length == 0) {
+            setError(this, 'valueMissing');
+        }
+        else if (title.value.length < this.minLength) {
+            setError(this, 'tooShort');
+        }
+        else if (title.value.length > this.maxLength) {
+            setError(this, 'tooLong');
+        }
+        else {
+            this.error = 0;
+        }
+    });
 
-// если хотим проверять только при отправке, то на всю форму вешаем событае submit -> там получаем значения полей и там все проверяем
-// сейчас делаем проверки в режиме реального времени -> для этого на каждый элемент формы, который хотим проверять - нужно добавить обработчик события
+// обрабатываем фокус на дате
+    date.addEventListener('focusin', function () {
+        clearFormSuccess();
+        clearError(this);
+    });
+// обрабатываем изменение даты
+    date.addEventListener('change', function () {
+        let dateEntered = new Date(date.value); // создаем объект даты из данных формы
+        let dateNow = new Date(); // создаем объект текущей даты
+        let time_gap = dateEntered.getTime() - dateNow.getTime(); // приводим объекты к миллисекундам и вычисляем разность
+        if (time_gap <= 0) { // если дата в прошлом, выдаем ошибку
+            setError(this, 'wrongDate');
+        }
+        else {
+            this.error = 0;
+        }
+    });
 
-// обращаемся к форме добавления задачи addTaskForm
-// -> обращаемся к списку элементов формы .elements
-// -> по значению атрибута name получаем конкретное поле формы (пользовательь будет вводить в это поле данные)
-// -> на это поле вешаем обработчик события addEventListener
-// (событие НЕ в фокусе, это или инпут или key up)
-function setSuccess(elem) {
-    elem.nextElementSibling.innerText = ''; // если не хотим выводить 'Поле заполнено верно'
+// обрабатываем нажатие на кнопку отправки
+    submit.addEventListener('click', function () {
+        if ((date.error == 0) && (title.error == 0)) { // если нет ошибок, сохраняем задачу в хранилище
+            saveTaskToLS();
+        }
+    });
+
 }
-function setError(elem, key){
-    let messages = {
-        valueMissing: 'Поле должно быть заполнено',
-        tooShort:`Минмиальное количество символов ${elem.minLength}`,
-        tooLong: `Максимальное количество символов ${elem.maxLength}`,
-        isBeforeCurrentDate: `Дата не должна быть в прошлом ${elem.dateTime}` // Не разобралась, что должно быть вместо dateTime // НЕ ПОНЯЛА, КАК ПРОВЕРИТЬ ДАТУ
-    };
-    this.nextElementSibling.innerText = messages[key];
-    this.nextElementSibling.className = 'message error active';
-}
-addTaskForm.elements.title.addEventListener('input', function () {
-    if (this.validity.valueMissing) setError(this, 'valueMissing');
-    else if (this.validity.tooShort) setError(this, 'tooShort');
-    else if (this.validity.tooLong) setError(this, 'tooLong');
-    else setSuccess(this);
-});
 
-addTaskForm.elements.date.addEventListener('input', function () {
-    if (this.validity.valueMissing) setError(this, 'valueMissing');
-    else if (this.validity.isBeforeCurrentDate.value) setError(this, 'isBeforeCurrentDate'); // НЕ ПОНЯЛА, КАК ПРОВЕРИТЬ ДАТУ
-    else setSuccess(this);
-});
-
-
-
-
-// каждый раз, когда в поле будет вводиться значение, будет вызываться эта функция-обработчик
-// ОБЪЯСНЕНИЕ Ф-ИИ
-// получаем ссылку на объект, который хранит инф-ю о том валидно поле или нет
-// -> уже через этот объект мы смотрим добавлено туда что-то, слишком короткое, длинное и т.д,
-
-
-/* let tasks = [];
-let userTask = {
-    title: title,
-    description: description,
-    date
-} */
-
-
-
-// addTaskForm.elements.submit();
-
-// ДОБАВЛЕНИЕ В LS
-
-
-
-// 2. Введенные пользователем данные из формы должны сохраниться в локальном хранилище
-/* В браузере на компьютере пользователя есть LocalStorage. К нему имеет доступ JS (может: положить/извлечь данные)
-Данные в LS хранятся пока сторона JS или пользователь не очистят.
-LS хранит данные в парах ключ: значение (ключ - строка, значение - строка. Если передаем массив, то он будет преобразован в строку)
-На каждый домен своё хранилище.
-*/
-
-
-
-/* СТРОКИ
-// ДОБАВЛЕНИЕ ключа и значения в LS
-// обращаемяс к LS через объект js - localStorage // добавляем ключ и значение .setItem() // и передаем агрменты (парвый аргумент - ключ, второе - значение)
-localStorage.setItem("title", "");
-
-// ПОЛУЧЕНИЕ значения из LS по ключу
-//console.log(localStorage.getItem("title")); // если такого ключа нет, то будет undefined */
-
-
-
-
-
-// СОХРАНЕНИЕ ДАННЫХ, ВВЕДЕННЫХ ПОЛЬЗОВАТЕЛЕМ В LOCAL STORAGE
-// JSON используется для передачи данных между сервером и клиентом
-// клиент запросил данные -> сервер собрал и преобразовал в JSON "[{}, {}, {}]"
-// клиентская сторона эту строчку получила и сделала из неё массив с объектами [{}, {}, {}], массив перебрала и информацию об объекте вывела в html
-// или клиентская сторона собрала информацию, завернула в JSON "[{}, {}, {}]" и отправила -> серверная сторона эту строчку получила, собрала из нее те типы данных
-// с которыми умеет работать [{}, {}] и ими воспользовалась и в LS сохранила
-// ! Файлы с расширение JSON используем для настройки на Vue.js + настройки для системы сборки фронтенда
-
-// "task" - не имя переменной (объекта), это мы придумали такое название для ключа
-// по ключу "task" будем хранить JSON-строчку
-localStorage.setItem("task", JSON.stringify(task)); // task - то, что хотим преобразовать в JSON-строку передаем в метод stringify
-// сначала объект task будет преобразован в формат JSON
-// после этого JSON-строчка JSON.stringify(task) будет сохранена в LS через объект js localStorage
-
-
-
-
-
-
-
-
-
-
-// название задачи - обязательное поле
-
-// срок выполнения задачи проверить на то, что дата не в прошлом
-
-// проверять поля "Название задачи" и "Срок выполнения задачи" можно сразу, а можно по кнопке "Добавить задачу"
-
-
-// собрали данные введенные пользователем в объект
-
-
-
-
-
-
-let arr = Array.from(title.values());
-console.log(arr)
-// далее обращаемся к локальному хранилищу
-// если есть добавленные задачи, то достаем их
-// сериализуем оттуда в массив [{}, {}, {}]. (Новый массив тогда не создаем!) Один объект - одна задача.
-// преобразуем его оттуда в действительный тип данных Array, а не в строчку
-// новый объект созданный в этот массив добавляете
-// массив снова сериализуем в строчку
-// сохраняем в локальное хранилище
-
-
-// если на момент добавления задачи задач в локальном хранилище нет, то этот момент тоже обрабатываем
-// тогда изначально создаем пустой массив!!! let arr =[];
-// в него добавляем наш объект {}
-// сериализуем в json строчку и сохраняем в локальное хранилище
-
-
-// пользователю после этого пишем - "Ваша задача успешно добавлена"
+// запускаем весь процесс после того, как вся страница была загружена
+document.addEventListener('DOMContentLoaded', main, false);

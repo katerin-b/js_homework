@@ -7,33 +7,28 @@
     <link rel="stylesheet" href="css/add-task2.css">
 </head>
 <body>
-    <h1>Добавление задачи</h1>
-    <form name="task" novalidate action="#" method="post"> <!-- novalidate отключает отображение встроенных сообщений об ошибке -->
-        <!--<div class="form-message success">Добавление задачи</div>-->
-        <div>
-            <label for="title">Название задачи *</label>
-            <input name="title" id="title" type="text" placeholder="Введите название задачи"
-                   minlength="1" maxlength="20" required>
-                   <!-- id="title" должно быть или нет? -->
-           <!-- <span class="message">*</span>-->
-        </div>
-        <div>
-            <label for="description">Описание задачи</label>
-            <textarea name="description" id="description" type="text" placeholder="Введите описание задачи"
-                      rows="6"></textarea>
-        </div>
-        <div>
-            <label for="date">Срок выполнения задачи *</label>
-            <input name="date" id="date" type="datetime-local"
-                   required="required">
-        </div>
-        <div>
-            <button type="submit">Добавить задачу</button>
-            <!-- или так?
-            <input type="submit"
-                   value="Добавить задачу"> -->
-        </div>
-    </form>
-    <script src="js/add-task.js"></script>
+<h1>Добавление задачи</h1>
+<div id="formMessageSuccess"></div>
+<form name="task" novalidate action="#" method="post"> <!-- novalidate отключает отображение встроенных сообщений об ошибке -->
+
+    <div>
+        <label for="title">Название задачи *</label>
+        <input name="title" type="text" placeholder="Введите название задачи" minlength="1" maxlength="20" required>
+        <div class="errMsg"></div>
+    </div>
+    <div>
+        <label for="description">Описание задачи</label>
+        <textarea name="description" type="text" placeholder="Введите описание задачи" rows="6"></textarea>
+    </div>
+    <div>
+        <label for="date">Срок выполнения задачи *</label>
+        <input name="date" type="datetime-local" required="required">
+        <div class="errMsg"></div>
+    </div>
+    <div>
+        <input name="submit" type="button" value="Добавить задачу">
+    </div>
+</form>
+<script src="js/add-task.js"></script>
 </body>
 </html>
