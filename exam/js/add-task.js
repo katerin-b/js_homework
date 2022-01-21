@@ -55,7 +55,7 @@ function main () {
     });
 // обрабатываем изменение адреса
     title.addEventListener('change', function () {
-        if (title.value.length == 0) {
+        if (title.value.length === 0) {
             setError(this, 'valueMissing');
         }
         else if (title.value.length < this.minLength) {
@@ -89,7 +89,7 @@ function main () {
 
 // обрабатываем нажатие на кнопку отправки
     submit.addEventListener('click', function () {
-        if ((date.error == 0) && (title.error == 0)) { // если нет ошибок, сохраняем задачу в хранилище
+        if ((date.error === 0) && (title.error === 0)) { // если нет ошибок, сохраняем задачу в хранилище
             saveTaskToLS();
         }
     });
