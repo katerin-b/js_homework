@@ -18,9 +18,6 @@ getTaskFromLS = JSON.parse(getTaskFromLS);
 console.log(getTaskFromLS);
 
 
-
-// ?????? let list = document.querySelector("h1");
-
 // если пользователь ввел задачи
 if (getTaskFromLS.length>0) {
     let taskList = document.createElement("div");
@@ -33,8 +30,14 @@ if (getTaskFromLS.length>0) {
         taskDescription.innerText = getTaskFromLS[i].description;
         let date = document.createElement("p");
         date.innerText = `Выполнить к: ${getTaskFromLS[i].date}`;
+        taskList.append(outputList);
+        taskList.append(taskName);
+        taskList.append(taskDescription);
+        taskList.append(date);
     }
+    document.body.append(taskList);
 };
+
 
 // если пользователь НЕ ввел задачи
 if (getTaskFromLS.length===0) {
