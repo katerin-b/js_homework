@@ -44,6 +44,12 @@ if (getTaskFromLS.length>0) {
    document.body.append(taskList);
 };
 
+// если пользователь НЕ ввел задачи
+if (getTaskFromLS.length===0) {
+    let emptyTaskList = document.createElement("div");
+    emptyTaskList.innerText = "Список задач пуст";
+    document.body.append(emptyTaskList);
+};
 
 
 let btn_delete = document.querySelector('.delete-task-from-ls');
